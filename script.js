@@ -67,7 +67,7 @@ var app = new Vue({
             if (this.arr.length == 0) {
                 this.arr = [2, 3, 6, 7, 4, 8, 10, 11, 12];
             }
-;
+            ;
             const choice = getRandomInt(0, this.arr.length - 1)
             this.generatedChoice.push(this.arr[choice])
             const individualDiceChoice = getDicePosition(this.arr[choice])
@@ -79,14 +79,16 @@ var app = new Vue({
 
             // Animation logic
             let dice = document.querySelectorAll("img");
+            const shakeClassess = ["shake-crazy", "shake-constant"]
+
             dice.forEach(function (die) {
-                die.classList.add("shake");
+                die.classList.add(...shakeClassess);
             });
             const d1 = this.dice1Value;
             const d2 = this.dice2Value;
             setTimeout(function () {
                 dice.forEach(function (die) {
-                    die.classList.remove("shake");
+                    die.classList.remove(...shakeClassess);
                 });
                 // let dieOneValue = Math.floor(Math.random()*6);
                 // let dieTwoValue = Math.floor(Math.random()*6);
@@ -95,7 +97,7 @@ var app = new Vue({
                 document.querySelector("#die-2").setAttribute("src", diceImages[d2]);
                 document.querySelector("#total").innerHTML = "Your Got " + (d1 + d2);
             },
-                1000
+                2000
             );
             console.log(this.generatedChoice)
         },
