@@ -79,7 +79,7 @@ var app = new Vue({
 
             // Animation logic
             let dice = document.querySelectorAll("img");
-            const shakeClassess = ["shake-crazy", "shake-constant"]
+            const shakeClassess = ["shake-chunk", "shake-constant"]
 
             dice.forEach(function (die) {
                 die.classList.add(...shakeClassess);
