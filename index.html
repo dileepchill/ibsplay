@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Roll The Dice</title>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
-
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="style.css">
 </head>
-
-<body>
-
-    <div id="app">
-        <p>{{ message }}</p>
-        <p>Dice 1 :: {{dice1Value}}</p>
-        <p>Dice 2 :: {{dice2Value}}</p>
-        <p>Hidden Choice :: {{arr}}</p>
-        <p>Generated Random Choice so far:: {{generatedChoice}}</p>
-
-        <button v-on:click="rollDice">Roll Dice</button>
-        <button v-on:click="resetBoard">Reset Board</button>
-
+<body >
+    <div class="container" id="app">
+        <div class="dice-wrapper">
+            <img  id="die-1">
+            <img  id="die-2">
+        </div>
+        <p id="total"></p>
+        <button  v-on:click="rollDice">ROLL THE DICE</button>
     </div>
-
+    <!--Script-->
+    <script src="script.js"></script>
 </body>
-<script src="./index.js"></script>
-
 </html>
