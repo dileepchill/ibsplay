@@ -38,10 +38,15 @@ var app = new Vue({
         dice1Value: 2,
         dice2Value: 6,
         arr: [2, 3, 6, 7, 4, 8, 10, 11, 12],
-        generatedChoice:[]
+        generatedChoice: []
     },
     methods: {
         rollDice: function () {
+
+            if (this.arr.length == 0) {
+                this.arr = [2, 3, 6, 7, 4, 8, 10, 11, 12];
+            }
+
             console.log(this.arr)
             console.log(this.arr.length)
             // generate random choice of possiblle value of 2dice once

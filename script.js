@@ -1,4 +1,4 @@
-let images = ["", "dice-01.svg",
+let diceImages = ["", "dice-01.svg",
     "dice-02.svg",
     "dice-03.svg",
     "dice-04.svg",
@@ -10,8 +10,8 @@ let images = ["", "dice-01.svg",
 // }
 // roll();
 
-document.querySelector("#die-1").setAttribute("src", images[2]);
-document.querySelector("#die-2").setAttribute("src", images[6]);
+document.querySelector("#die-1").setAttribute("src", diceImages[4]);
+document.querySelector("#die-2").setAttribute("src", diceImages[5]);
 
 
 
@@ -60,30 +60,22 @@ var app = new Vue({
         dice2Value: 6,
         arr: [2, 3, 6, 7, 4, 8, 10, 11, 12],
         generatedChoice: [],
-        imgs: ["", "dice-01.svg",
-            "dice-02.svg",
-            "dice-03.svg",
-            "dice-04.svg",
-            "dice-05.svg",
-            "dice-06.svg"]
     },
     methods: {
         rollDice: function () {
-            console.log(this.arr)
-            console.log(this.arr.length)
-            // generate random choice of possiblle value of 2dice once
+
+            if (this.arr.length == 0) {
+                this.arr = [2, 3, 6, 7, 4, 8, 10, 11, 12];
+            }
+;
             const choice = getRandomInt(0, this.arr.length - 1)
             this.generatedChoice.push(this.arr[choice])
-            // get individual dice value
             const individualDiceChoice = getDicePosition(this.arr[choice])
-
             this.dice1Value = individualDiceChoice[0]
             this.dice2Value = individualDiceChoice[1]
+            this.arr.splice(choice, 1)
 
-            this.arr.splice(choice, 1) //remove the choice for futher use.
-
-            console.log(this.dice1Value, this.dice2Value)
-
+            // console.log(this.dice1Value, this.dice2Value)
 
             // Animation logic
             let dice = document.querySelectorAll("img");
@@ -92,7 +84,6 @@ var app = new Vue({
             });
             const d1 = this.dice1Value;
             const d2 = this.dice2Value;
-            const imges = this.imgs;
             setTimeout(function () {
                 dice.forEach(function (die) {
                     die.classList.remove("shake");
@@ -100,16 +91,13 @@ var app = new Vue({
                 // let dieOneValue = Math.floor(Math.random()*6);
                 // let dieTwoValue = Math.floor(Math.random()*6);
                 // console.log(dieOneValue,dieTwoValue);
-                console.log(imges)
-                console.log(imges[d1])
-                console.log(imges[d2])
-                document.querySelector("#die-1").setAttribute("src", imges[d1]);
-                document.querySelector("#die-2").setAttribute("src", imges[d2]);
+                document.querySelector("#die-1").setAttribute("src", diceImages[d1]);
+                document.querySelector("#die-2").setAttribute("src", diceImages[d2]);
                 document.querySelector("#total").innerHTML = "Your Got " + (d1 + d2);
             },
                 1000
             );
-
+            console.log(this.generatedChoice)
         },
 
         resetBoard: function () {
