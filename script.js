@@ -87,15 +87,17 @@ var app = new Vue({
             const d1 = this.dice1Value;
             const d2 = this.dice2Value;
             setTimeout(function () {
-                dice.forEach(function (die) {
-                    die.classList.remove(...shakeClassess);
-                });
+                
                 // let dieOneValue = Math.floor(Math.random()*6);
                 // let dieTwoValue = Math.floor(Math.random()*6);
                 // console.log(dieOneValue,dieTwoValue);
                 document.querySelector("#die-1").setAttribute("src", diceImages[d1]);
                 document.querySelector("#die-2").setAttribute("src", diceImages[d2]);
                 document.querySelector("#total").innerHTML = "Your Got " + (d1 + d2);
+
+                dice.forEach(function (die) {
+                    die.classList.remove(...shakeClassess);
+                });
             },
                 2000
             );
